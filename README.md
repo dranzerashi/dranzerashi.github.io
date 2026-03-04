@@ -1,6 +1,6 @@
 # Ashith Raghunath — Pixels & Code
 
-A personal portfolio website featuring a neo-cyberpunk design with dynamic canvas animations.
+A personal portfolio website
 
 
 ## Tech Stack
