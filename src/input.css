@@ -4,6 +4,28 @@
 @tailwind utilities;
 
 /* Engineering notes drawer */
+@keyframes notes-fab-pulse {
+  0%, 100% {
+    border-color: rgba(0, 255, 179, 0.42);
+    box-shadow: 0 0 22px rgba(0, 255, 179, 0.18), inset 0 0 0 1px rgba(255,255,255,0.04);
+  }
+  50% {
+    border-color: rgba(0, 255, 179, 0.68);
+    box-shadow: 0 0 34px rgba(0, 255, 179, 0.32), inset 0 0 0 1px rgba(0, 255, 179, 0.12);
+  }
+}
+
+@keyframes notes-icon-pulse {
+  0%, 100% {
+    opacity: 0.78;
+    filter: drop-shadow(0 0 0 rgba(0, 255, 179, 0));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 7px rgba(0, 255, 179, 0.58));
+  }
+}
+
 .notes-fab {
   position: fixed;
   right: 1.25rem;
@@ -23,7 +45,13 @@
   color: #00FFB3;
   box-shadow: 0 0 28px rgba(0, 255, 179, 0.22), inset 0 0 0 1px rgba(255,255,255,0.04);
   backdrop-filter: blur(12px);
+  cursor: pointer;
+  animation: notes-fab-pulse 2.8s ease-in-out infinite;
   transition: width 200ms ease, transform 180ms ease, background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.notes-fab * {
+  cursor: inherit;
 }
 
 .notes-fab:hover,
@@ -41,6 +69,7 @@
   width: 1.15rem;
   height: 1.15rem;
   flex: 0 0 auto;
+  animation: notes-icon-pulse 2.8s ease-in-out infinite;
 }
 
 .notes-fab__label {
@@ -237,5 +266,12 @@
 
   .notes-panel.is-open {
     transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notes-fab,
+  .notes-fab__icon {
+    animation: none;
   }
 }
